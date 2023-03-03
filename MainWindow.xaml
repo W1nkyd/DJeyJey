@@ -1,0 +1,41 @@
+﻿<Window x:Class="Djeyjey.MainWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:local="clr-namespace:Djeyjey"
+mc:Ignorable="d"
+Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.6*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="listbox" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3">
+
+            <TextBox x:Name="TBFileName" FontSize="18" Margin="0,43,5,72" Grid.Row="2"/>
+        </ListBox>
+
+
+        <Button x:Name="picker" Content="Выбор файла" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Click="picker_Click"/>
+        <Button x:Name="back" Content="Stop" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="0" Click="back_Click"/>
+        <Button x:Name="paustart" Content="Start" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Click="paustart_Click"/>
+        <Button x:Name="forward" Content="Pause" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="2" Click="forward_Click"/>
+        <Button x:Name="repeat" Content="repeat" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="3" Click="repeat_Click"/>
+        <Button x:Name="random" Content="random" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="4" Click="random_Click"/>
+        <Slider HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" ValueChanged="Slider_ValueChanged" Value="{Binding ElementName=my_media,Path=Balance,Mode=TwoWay}"/>
+
+
+    </Grid>
+</Window>
