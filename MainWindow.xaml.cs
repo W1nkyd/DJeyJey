@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +29,6 @@ public partial class MainWindow : Window
             InitializeComponent();
         }
         bool drag = false;
-        MediaPlayer mediaPlayer = new MediaPlayer();
         string FileName;
 
         private void picker_Click(object sender, RoutedEventArgs e)
@@ -42,34 +42,40 @@ public partial class MainWindow : Window
             if (dialogWin == true)
             {
                 FileName = fileDialog.FileName;
-                TBFileName.Text = fileDialog.SafeFileName;
-                mediaPlayer.Open(new Uri(FileName));
+                listbox.ItemsSource = fileDialog.SafeFileName;
+                MediaPlayer.Source = new Uri(FileName);
             }
+            //Slider.Value = MediaPlayer.Position.Ticks;
         }
+      
 
         private void paustart_Click(object sender, RoutedEventArgs e)
         {
 
-            mediaPlayer.Play();
+            MediaPlayer.Play();
 
-
+            if (drag == true)
+            {
+                MediaPlayer.Pause();
+                drag = false;
+            }
 
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Stop();
+            MediaPlayer.Stop();
         }
 
         private void forward_Click(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Pause();
+            MediaPlayer.Pause();
         }
 
         private void repeat_Click(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Stop();
-            mediaPlayer.Play();
+            MediaPlayer.Stop();
+            MediaPlayer.Play();
         }
 
         private void random_Click(object sender, RoutedEventArgs e)
@@ -83,16 +89,32 @@ public partial class MainWindow : Window
             mediaPlayer.Pause();
             mediaPlayer.Position = TimeSpan.FromSeconds(Slider.Value);
             mediaPlayer.Play();*/
+            MediaPlayer.Position = new TimeSpan(Convert.ToInt64(Slider.Value));
+            Slider.Value = MediaPlayer.Position.Ticks;
+
+
         }
 
         private void stop_Click(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Stop();
+            MediaPlayer.Stop();
         }
 
         private void pause_Click(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Pause();
+            MediaPlayer.Pause();
+        }
+
+        private void TBFileName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            
+
+        }
+
+        private void MediaOpen(object sender, RoutedEventArgs e)
+        {
+            Slider.Maximum = MediaPlayer.NaturalDuration.TimeSpan.Ticks;
         }
     }
 

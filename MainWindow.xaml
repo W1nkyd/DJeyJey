@@ -24,18 +24,19 @@ Title="MainWindow" Height="450" Width="800">
 
         <ListBox x:Name="listbox" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3">
 
-            <TextBox x:Name="TBFileName" FontSize="18" Margin="0,43,5,72" Grid.Row="2"/>
+            
+            
         </ListBox>
 
 
         <Button x:Name="picker" Content="Выбор файла" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Click="picker_Click"/>
-        <Button x:Name="back" Content="Stop" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="0" Click="back_Click"/>
+        <Button x:Name="back" Content="Next" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="0" Click="back_Click"/>
         <Button x:Name="paustart" Content="Start" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Click="paustart_Click"/>
         <Button x:Name="forward" Content="Pause" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="2" Click="forward_Click"/>
         <Button x:Name="repeat" Content="repeat" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="3" Click="repeat_Click"/>
         <Button x:Name="random" Content="random" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="4" Click="random_Click"/>
-        <Slider HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" ValueChanged="Slider_ValueChanged" Value="{Binding ElementName=my_media,Path=Balance,Mode=TwoWay}"/>
-
+        <Slider x:Name="Slider" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" ValueChanged="Slider_ValueChanged" Value="{Binding ElementName=my_media,Path=Balance,Mode=TwoWay}" Margin="0,116,0,0"/>
+        <MediaElement x:Name="MediaPlayer" Height="99" Width="473" LoadedBehavior="Manual" Grid.ColumnSpan="3" Margin="-9,95,16,95" Grid.RowSpan="2" Grid.Row="2" MediaOpened="MediaOpen"/>
 
     </Grid>
 </Window>
